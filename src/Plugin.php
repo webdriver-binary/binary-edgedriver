@@ -1,14 +1,24 @@
 <?php
-/**
- * Copyright © Vaimo Group. All rights reserved.
- * See LICENSE_VAIMO.txt for license details.
- */
-namespace Vaimo\EdgeDriver;
+
+declare(strict_types=1);
+
+namespace Lanfest\EdgeDriver;
+
+use Composer\Composer;
+use Composer\IO\IOInterface;
 
 class Plugin implements \Composer\Plugin\PluginInterface, \Composer\EventDispatcher\EventSubscriberInterface
 {
-    public function activate(\Composer\Composer $composer, \Composer\IO\IOInterface $io)
+    /** @var Composer */
+    private $composerRuntime;
+
+    /** @var IOInterface */
+    private $cliIO;
+
+    public function activate(Composer $composer, IOInterface $cliIO): void
     {
+      $this->composerRuntime = $composer;
+      $this->cliIO = $cliIO;
     }
     
     public static function getSubscribedEvents()
@@ -19,15 +29,25 @@ class Plugin implements \Composer\Plugin\PluginInterface, \Composer\EventDispatc
         ];
     }
     
-    public function installDriver(\Composer\Script\Event $event)
+    public function installDriver(): void
     {
-        $composerRuntime = $event->getComposer();
-        $io = $event->getIo();
-
-        $driverInstaller = new \Vaimo\WebDriverBinaryDownloader\Installer($composerRuntime, $io);
+        $driverInstaller = new \Lanfest\WebDriverBinaryDownloader\Installer(
+          $this->composerRuntime,
+          $this->cliIO
+        );
         
-        $pluginConfig = new \Vaimo\EdgeDriver\Plugin\Config($composerRuntime->getPackage());
+        $pluginConfig = new \Lanfest\EdgeDriver\Plugin\Config(
+          $this->composerRuntime->getPackage()
+        );
 
         $driverInstaller->executeWithConfig($pluginConfig);
+    }
+
+    public function deactivate(Composer $composer, IOInterface $io): void
+    {
+    }
+
+    public function uninstall(Composer $composer, IOInterface $io): void
+    {
     }
 }

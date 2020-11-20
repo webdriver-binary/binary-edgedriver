@@ -1,26 +1,20 @@
 {
-    "name": "vaimo/binary-edgedriver",
+    "name": "lanfest/binary-edgedriver",
     "type": "composer-plugin",
     "license": "MIT",
     "description": "Utility for downloading Microsoft Edge Driver binary with browser version detection",
     "require": {
-        "composer-plugin-api": "^1.0",
-        "vaimo/webdriver-binary-downloader": "^2.0.0"
+        "php": ">=7.2",
+        "composer-plugin-api": "^1.0 | ^2.0",
+        "lanfest/webdriver-binary-downloader": "^3.0.0"
     },
-    "require-dev": {
-        "composer/composer": "~1.0",
-        "vaimo/composer-changelogs": "^0.9.1"
+    "replace": {
+        "vaimo/binary-edgedriver": "*"
     },
-    "authors": [
-        {
-            "name": "Allan Paiste",
-            "email": "allan.paiste@vaimo.com"
-        }
-    ],
     "support": {
-        "source": "https://github.com/vaimo/binary-edgedriver",
-        "docs": "https://github.com/vaimo/binary-edgedriver",
-        "issues": "https://github.com/vaimo/binary-edgedriver/issues"
+        "source": "https://github.com/LANFest/binary-edgedriver",
+        "docs": "https://github.com/LANFest/binary-edgedriver",
+        "issues": "https://github.com/LANFest/binary-edgedriver/issues"
     },
     "keywords": [
         "edgedriver",
@@ -41,13 +35,10 @@
     ],
     "autoload": {
         "psr-4": {
-            "Vaimo\\EdgeDriver\\": "src"
+            "Lanfest\\EdgeDriver\\": "src"
         }
     },
     "extra": {
-        "class": "Vaimo\\EdgeDriver\\Plugin",
-        "changelog": {
-            "source": "changelog.json"
-        }
+        "class": "Lanfest\\EdgeDriver\\Plugin"
     }
 }

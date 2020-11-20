@@ -1,9 +1,9 @@
 # binary-edgedriver
 
-[![Latest Stable Version](https://poser.pugx.org/vaimo/binary-edgedriver/v/stable)](https://packagist.org/packages/vaimo/binary-edgedriver)
-[![Total Downloads](https://poser.pugx.org/vaimo/binary-edgedriver/downloads)](https://packagist.org/packages/vaimo/binary-edgedriver)
-[![Daily Downloads](https://poser.pugx.org/vaimo/binary-edgedriver/d/daily)](https://packagist.org/packages/vaimo/binary-edgedriver)
-[![License](https://poser.pugx.org/vaimo/binary-edgedriver/license)](https://packagist.org/packages/vaimo/binary-edgedriver)
+[![Latest Stable Version](https://poser.pugx.org/lanfest/binary-edgedriver/v/stable)](https://packagist.org/packages/lanfest/binary-edgedriver)
+[![Total Downloads](https://poser.pugx.org/lanfest/binary-edgedriver/downloads)](https://packagist.org/packages/lanfest/binary-edgedriver)
+[![Daily Downloads](https://poser.pugx.org/lanfest/binary-edgedriver/d/daily)](https://packagist.org/packages/lanfest/binary-edgedriver)
+[![License](https://poser.pugx.org/lanfest/binary-edgedriver/license)](https://packagist.org/packages/lanfest/binary-edgedriver)
 
 Downloads Microsoft Edge Driver binary on Windows.
 

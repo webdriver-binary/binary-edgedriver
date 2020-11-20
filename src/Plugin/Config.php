@@ -1,13 +1,12 @@
 <?php
-/**
- * Copyright © Vaimo Group. All rights reserved.
- * See LICENSE_VAIMO.txt for license details.
- */
-namespace Vaimo\EdgeDriver\Plugin;
 
-use Vaimo\WebDriverBinaryDownloader\Interfaces\PlatformAnalyserInterface as Platform;
+declare(strict_types=1);
 
-class Config implements \Vaimo\WebDriverBinaryDownloader\Interfaces\ConfigInterface
+namespace Lanfest\EdgeDriver\Plugin;
+
+use Lanfest\WebDriverBinaryDownloader\Interfaces\PlatformAnalyserInterface as Platform;
+
+class Config implements \Lanfest\WebDriverBinaryDownloader\Interfaces\ConfigInterface
 {
     /**
      * @var \Composer\Package\PackageInterface
@@ -23,7 +22,7 @@ class Config implements \Vaimo\WebDriverBinaryDownloader\Interfaces\ConfigInterf
         $this->configOwner = $configOwner;
     }
 
-    public function getPreferences()
+    public function getPreferences(): array
     {
         $extra = $this->configOwner->getExtra();
 
@@ -37,12 +36,12 @@ class Config implements \Vaimo\WebDriverBinaryDownloader\Interfaces\ConfigInterf
         );
     }
 
-    public function getDriverName()
+    public function getDriverName(): string
     {
         return 'EdgeDriver';
     }
-    
-    public function getRequestUrlConfig()
+
+    public function getRequestUrlConfig(): array
     {
         $baseUrl = 'https://download.microsoft.com/download';
         
@@ -51,8 +50,8 @@ class Config implements \Vaimo\WebDriverBinaryDownloader\Interfaces\ConfigInterf
             self::REQUEST_DOWNLOAD => sprintf('%s/{{hash}}/{{file}}', $baseUrl)
         ];
     }
-    
-    public function getBrowserBinaryPaths()
+
+    public function getBrowserBinaryPaths(): array
     {
         return [
             Platform::TYPE_LINUX32 => [],
@@ -62,22 +61,22 @@ class Config implements \Vaimo\WebDriverBinaryDownloader\Interfaces\ConfigInterf
             Platform::TYPE_WIN64 => [null]
         ];
     }
-    
-    public function getBrowserVersionPollingConfig()
+
+    public function getBrowserVersionPollingConfig(): array
     {
         return [
             'powershell.exe "Get-AppxPackage Microsoft.MicrosoftEdge | %%{echo $_.version}"' => ['([0-9].+)']
         ];
     }
     
-    public function getDriverVersionPollingConfig()
+    public function getDriverVersionPollingConfig(): array
     {
         return [
             'wmic datafile where name="%s" get Version /value' => ['Version=([0-9].+)']
         ];
     }
     
-    public function getBrowserDriverVersionMap()
+    public function getBrowserDriverVersionMap(): array
     {
         return [
             '18.00000' => '',
@@ -90,7 +89,7 @@ class Config implements \Vaimo\WebDriverBinaryDownloader\Interfaces\ConfigInterf
         ];
     }
     
-    public function getDriverVersionHashMap()
+    public function getDriverVersionHashMap(): array
     {
         return [
             '6.17134' => 'F/8/A/F8AF50AB-3C3A-4BC4-8773-DC27B32988DD',
@@ -102,7 +101,7 @@ class Config implements \Vaimo\WebDriverBinaryDownloader\Interfaces\ConfigInterf
         ];
     }
     
-    public function getRemoteFileNames()
+    public function getRemoteFileNames(): array
     {
         return [
             Platform::TYPE_LINUX32 => '',
@@ -113,7 +112,7 @@ class Config implements \Vaimo\WebDriverBinaryDownloader\Interfaces\ConfigInterf
         ];
     }
 
-    public function getExecutableFileNames()
+    public function getExecutableFileNames(): array
     {
         return [
             Platform::TYPE_LINUX32 => '',
@@ -124,7 +123,7 @@ class Config implements \Vaimo\WebDriverBinaryDownloader\Interfaces\ConfigInterf
         ];
     }
 
-    public function getExecutableFileRenames()
+    public function getExecutableFileRenames(): array
     {
         return [
             'MicrosoftWebDriver.exe' => 'edgedriver.exe'
