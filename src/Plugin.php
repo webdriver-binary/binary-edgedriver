@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Lanfest\EdgeDriver;
+namespace WebdriverBinary\EdgeDriver;
 
 use Composer\Composer;
 use Composer\IO\IOInterface;
@@ -31,12 +31,12 @@ class Plugin implements \Composer\Plugin\PluginInterface, \Composer\EventDispatc
     
     public function installDriver(): void
     {
-        $driverInstaller = new \Lanfest\WebDriverBinaryDownloader\Installer(
+        $driverInstaller = new \WebdriverBinary\WebDriverBinaryDownloader\Installer(
           $this->composerRuntime,
           $this->cliIO
         );
         
-        $pluginConfig = new \Lanfest\EdgeDriver\Plugin\Config(
+        $pluginConfig = new \WebdriverBinary\EdgeDriver\Plugin\Config(
           $this->composerRuntime->getPackage()
         );
 

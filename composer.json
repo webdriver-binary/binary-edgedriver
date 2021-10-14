@@ -1,20 +1,21 @@
 {
-    "name": "lanfest/binary-edgedriver",
+    "name": "webdriver-binary/binary-edgedriver",
     "type": "composer-plugin",
     "license": "MIT",
     "description": "Utility for downloading Microsoft Edge Driver binary with browser version detection",
     "require": {
         "php": ">=7.2",
         "composer-plugin-api": "^1.0 | ^2.0",
-        "lanfest/webdriver-binary-downloader": "^3.0.0"
+        "webdriver-binary/webdriver-binary-downloader": "^3.0.0"
     },
     "replace": {
-        "vaimo/binary-edgedriver": "*"
+        "vaimo/binary-edgedriver": "*",
+        "lanfest/binary-edgedriver": "*"
     },
     "support": {
-        "source": "https://github.com/LANFest/binary-edgedriver",
-        "docs": "https://github.com/LANFest/binary-edgedriver",
-        "issues": "https://github.com/LANFest/binary-edgedriver/issues"
+        "source": "https://github.com/webdriver-binary/binary-edgedriver",
+        "docs": "https://github.com/webdriver-binary/binary-edgedriver",
+        "issues": "https://github.com/webdriver-binary/binary-edgedriver/issues"
     },
     "keywords": [
         "edgedriver",
@@ -35,10 +36,10 @@
     ],
     "autoload": {
         "psr-4": {
-            "Lanfest\\EdgeDriver\\": "src"
+            "WebdriverBinary\\EdgeDriver\\": "src"
         }
     },
     "extra": {
-        "class": "Lanfest\\EdgeDriver\\Plugin"
+        "class": "WebdriverBinary\\EdgeDriver\\Plugin"
     }
 }
